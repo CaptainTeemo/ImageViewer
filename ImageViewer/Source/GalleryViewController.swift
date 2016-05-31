@@ -67,6 +67,8 @@ final public class GalleryViewController : UIPageViewController, UIViewControlle
     /// If set, launched after all animations finish when the swipe-to-dismiss (applies to all directions and cases) gesture is used.
     public var swipedToDismissCompletion: (() -> Void)?
     
+    public var tapClosure: (() -> Void)?
+    
     /// IMAGE VC FACTORY
     private var imageControllerFactory: ImageViewControllerFactory!
     
@@ -416,6 +418,8 @@ final public class GalleryViewController : UIPageViewController, UIViewControlle
             self?.closeButton?.alpha = alpha
             
             })
+        
+        tapClosure?()
     }
     
     func imageViewControllerDidAppear(controller: ImageViewController) {
